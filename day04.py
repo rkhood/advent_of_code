@@ -6,7 +6,6 @@ def get_range(input_range='108457-562041'):
 def test_adjacent_digits(password):
     '''Two adjacent digits are the same (like 22 in 122345)'''
     num = str(password)
-
     x = num[0]
     for n in num[1:]:
         if n == x:
@@ -19,26 +18,19 @@ def test_adjacent_digits(password):
 def test_adjacent_double_digits(password):
     '''Two adjacent digits are the same (like 22 in 122345)'''
     num = str(password)
-
-    test_digits = False
     x = num[0]
     counter = 1
     for n in num[1:]:
         if n == x:
             counter +=1
         else:
-            if not counter % 2:
-                test_digits = True
-            if (counter > 1) and not (counter - 1) % 2:
-                return False
+            if counter == 2:
+                return True
             x = n
             counter = 1
-
-    if not counter % 2:
-        test_digits = True
-    if not (counter - 1) % 2:
-        return False
-    return test_digits
+    if counter == 2:
+        return True
+    return False
 
 
 def test_increasing(password):
